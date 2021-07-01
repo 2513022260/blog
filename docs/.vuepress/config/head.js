@@ -1,6 +1,6 @@
 module.exports = [
   // 注入到页面<head> 中的标签，格式[tagName, { attrName: attrValue }, innerHTML?]
-  ['link', { rel: 'icon', href: '/public/favicon.ico' }],
+  ['link', { rel: 'icon', href: '/img/favicon.ico' }],
   [
     'meta',
     {
