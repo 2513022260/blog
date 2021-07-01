@@ -51,7 +51,7 @@ module.exports = {
   },
   blogger: {
     // 博主信息，显示在首页侧边栏
-    avatar: 'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200103123203.jpg',
+    avatar: '/img/header.jpg',
     name: '旗木五五开',
     slogan: '前端打工人',
   },
