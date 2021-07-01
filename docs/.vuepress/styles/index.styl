@@ -56,3 +56,22 @@ body .vuepress-plugin-demo-block__wrapper
       border-bottom-color: $accentColor !important;
     svg
       fill: $accentColor !important;
+
+.theme-mode-light:after
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  z-index -1
+  content ""
+  background-image url('https://img.xjh.me/random_img.php?ctype=nature&return=302&type=bg')
+  background-repeat no-repeat
+  background-position 50%
+  opacity .06
+  filter grayscale(100%)
+  filter #808080
+  
+.theme-vdoing-wrapper
+  letter-spacing 2px!important
+  background-image linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%)
