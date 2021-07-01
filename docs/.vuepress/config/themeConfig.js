@@ -78,8 +78,7 @@ module.exports = {
   },
   footer: {
     // 页脚信息
-    createYear: 2019, // 博客创建年份
-    copyrightInfo:
-      '旗木五五开 | <a href="https://github.com/2513022260/blob/" target="_blank">MIT License</a>', // 博客版权信息，支持a标签
+    createYear: 2021, // 博客创建年份
+    copyrightInfo: '旗木五五开', // 博客版权信息，支持a标签
   }
 }
