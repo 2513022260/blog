@@ -1,6 +1,12 @@
 module.exports = [
   { text: '首页', link: '/' },
-  { text: '前端', link: '/web/' },
+  { 
+    text: '前端',
+    link: '/web/',
+    items: [
+      { text: 'Javascript', link: '/pages/a83c4b/' }
+    ]
+  },
   { 
     text: '技术',
     link: '/technology/',
