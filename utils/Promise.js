@@ -185,26 +185,27 @@ Promise.reject = function(val) {
 // race
 Promise.race = function(promises) {
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < promises.length; i++) {
-      promises[i].then(resolve, reject)
-    }
+    promises.forEach((promise) => {
+      promise.then(resolve, reject)
+    })
   })
 }
+
 // all 获取所有的promise，都执行then，把结果放到数组，一起返回
 Promise.all = function(promises) {
   let arr = []
   let i = 0
-  function processData(index, data) {
+  function processData(index, data, resolve) {
     arr[index] = data
     i++
     if (i === promises.length) resolve(arr)
   }
 
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < promises.length; i++) {
-      promises[i].then(data => {
-        processData(i, data)
+    promises.forEach(promise => {
+      promise.then(data => {
+        processData(i, data, resolve)
       }, reject)
-    } 
+    })
   })
 }
