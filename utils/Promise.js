@@ -113,6 +113,10 @@ class Promise {
     })
     return promise2
   }
+
+  catch(fn) {
+    return this.then(null, fn)
+  }
 }
 
 // 5-1 resolvePromise方法
@@ -168,11 +172,39 @@ Promise.defer = Promise.deferred = function(){
 }
 module.exports =  Promise
 
-// 1. 立即执行 executor(resolve, reject)
-// let p = new Promise1((resolve, reject) => {})
-// p.then((e) => {
-//   console.log(1, e)
-// })
-// p.then((e) => {
-//   console.log(2, e)
-// }).then()
+// 扩展
+// catch、resolve、reject、race、all
+// resolve
+Promise.resolve = function(val) {
+  return new Promise((resolve, reject) => resolve(val))
+}
+// reject
+Promise.reject = function(val) {
+  return new Promise((resolve, reject) => reject(val))
+}
+// race
+Promise.race = function(promises) {
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promises.length; i++) {
+      promises[i].then(resolve, reject)
+    }
+  })
+}
+// all 获取所有的promise，都执行then，把结果放到数组，一起返回
+Promise.all = function(promises) {
+  let arr = []
+  let i = 0
+  function processData(index, data) {
+    arr[index] = data
+    i++
+    if (i === promises.length) resolve(arr)
+  }
+
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promises.length; i++) {
+      promises[i].then(data => {
+        processData(i, data)
+      }, reject)
+    } 
+  })
+}
