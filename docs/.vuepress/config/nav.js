@@ -4,7 +4,8 @@ module.exports = [
     text: '前端',
     link: '/web/',
     items: [
-      { text: 'Javascript', link: '/pages/a83c4b/' }
+      { text: 'Javascript', link: '/pages/a83c4b/' },
+      { text: 'Vue', link: '/pages/1e03f8/' },
     ]
   },
   { 
