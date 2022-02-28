@@ -4,7 +4,8 @@ module.exports = [
     text: '前端',
     link: '/web/',
     items: [
-      { text: 'Javascript', link: '/pages/a83c4b/' }
+      { text: 'Javascript', link: '/pages/a83c4b/' },
+      { text: 'Vue', link: '/pages/1e03f8/' },
     ]
   },
   { 
@@ -18,7 +19,7 @@ module.exports = [
     ]
   },
   { text: '更多', link: '/more/' },
-  { text: '关于', link: '/about/' },
+  { text: '源码', link: '/source/' },
   { text: '收藏', link: '/collect/' },
   { 
     text: '索引',
