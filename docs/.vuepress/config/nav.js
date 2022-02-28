@@ -19,7 +19,7 @@ module.exports = [
     ]
   },
   { text: '更多', link: '/more/' },
-  { text: '关于', link: '/about/' },
+  { text: '源码', link: '/source/' },
   { text: '收藏', link: '/collect/' },
   { 
     text: '索引',
