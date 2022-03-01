@@ -13,10 +13,8 @@
     "testPromise": "promises-aplus-tests /utils/Promise.js"
   },
   "devDependencies": {
+    "promises-aplus-tests": "^2.1.2",
     "vuepress": "^1.8.2",
     "vuepress-theme-vdoing": "^1.8.3"
-  },
-  "dependencies": {
-    "promises-aplus-tests": "^2.1.2"
   }
 }

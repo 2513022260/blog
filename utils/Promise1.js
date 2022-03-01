@@ -86,19 +86,54 @@ class myPromise {
   }
 }
 
-function resolvePromise(promise2, x, resolve, reject) {}
+function resolvePromise(promise2, x, resolve, reject) {
+  // 如果从`onFulfilled`或`onRejected`中返回的 `x` 就是`promise2`，会导致循环引用报错
+  if (x === promise2) {
+    return reject(new TypeError('Chaining cycle detected for promise'))
+  }
+  let called = false // 避免被多次调用
+  // x不是null 且x是对象或者函数
+  if (x !== null && (typeof x === 'object' || typeof x === 'function')) {
+    try {
+      // A+规定，声明then = x的then方法
+      let then = x.then
+      // 如果then是函数，就默认是promise了
+      if (typeof then === 'function') { 
+        then.call(x, y => {
+          // 成功和失败只能调用一个
+          if (called) return
+          called = true
+          // resolve的结果依旧是promise 那就继续解析
+          resolvePromise(promise2, y, resolve, reject)
+        }, err => {
+          // 成功和失败只能调用一个
+          if (called) return;
+          called = true;
+          reject(err) // 失败了就失败了
+        })
+      } else {
+        resolve(x)
+      }
+    } catch (e) {
+      // 也属于失败
+      if (called) return
+      called = true
+      // 取then出错了那就不要在继续执行了
+      reject(e)
+    }
+  } else {
+    resolve(x)
+  }
+}
 
-console.log(1)
-const p = new myPromise((resolve, reject) => {
-  setTimeout(() => {
-    console.log(2)
-    resolve(3)
-    console.log(4)
+myPromise.deferred = function () {
+  const result = {}
+  result.promise = new myPromise((resolve, reject) => {
+    result.resolve = resolve
+    result.reject = reject
   })
-})
-p.then((value) => {
-  console.log('value:' + value)
-}, (reason) => {
-  console.log(reason)
-})
-console.log(5)
+  return result
+}
+  
+
+module.exports = myPromise
