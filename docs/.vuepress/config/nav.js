@@ -20,7 +20,14 @@ module.exports = [
     ]
   },
   { text: '更多', link: '/more/' },
-  { text: '源码', link: '/source/' },
+  { 
+    text: '源码',
+    link: '/source/',
+    items: [
+      { text: '公共', link: '/pages/99b3e8/' },
+      { text: 'Axios', link: '/pages/1fda4a/' },
+    ]
+  },
   { text: '收藏', link: '/collect/' },
   { 
     text: '索引',
